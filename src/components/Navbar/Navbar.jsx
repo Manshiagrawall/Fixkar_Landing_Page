@@ -46,7 +46,7 @@ const Navbar = () => {
             FixKar
           </motion.h1>
           <p className="text-lg font-semibold text-primary">
-            Say It, Find It, Get It, Done!
+            Say It, Find It, Get It Done!
           </p>
         </div>
         {/* Menu section */}

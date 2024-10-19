@@ -536,69 +536,70 @@
 
 // export default Services;
 
-
 import React, { useRef, useState, useEffect } from "react";
 import { GiPlunger, GiHammerNails, GiPlantWatering } from "react-icons/gi";
 import { MdElectricalServices } from "react-icons/md";
 import { FaBroom, FaPaintRoller } from "react-icons/fa";
-import { AiOutlineSafety } from "react-icons/ai"; // For Pest Control
-import { MdMoveToInbox } from "react-icons/md"; // For Moving & Storage
-import { FaTools } from "react-icons/fa"; // For Handyman Services
+import { AiOutlineSafety } from "react-icons/ai";
+import { MdMoveToInbox } from "react-icons/md";
+import { FaTools } from "react-icons/fa";
+import UserImage from "../../assets/user.png"; // Import user image
+import ProviderImage from "../../assets/provider.png"; // Import provider image
 
 const ServicesData = [
   {
     id: 1,
     title: "Home Cleaning",
     link: "#",
-    icon: <FaBroom />, // Icon for Home Cleaning
+    icon: <FaBroom />,
   },
   {
     id: 2,
     title: "Landscaping",
     link: "#",
-    icon: <GiPlantWatering />, // Icon for Gardening & Landscaping
+    icon: <GiPlantWatering />,
   },
   {
     id: 3,
     title: "Plumbing",
     link: "#",
-    icon: <GiPlunger />, // Icon for Plumbing
+    icon: <GiPlunger />,
   },
   {
     id: 4,
     title: "Electrical",
     link: "#",
-    icon: <MdElectricalServices />, // Icon for Electrical
+    icon: <MdElectricalServices />,
   },
   {
     id: 5,
     title: "Home Repairs",
     link: "#",
-    icon: <GiHammerNails />, // Icon for Home Repairs
+    icon: <GiHammerNails />,
   },
   {
     id: 6,
     title: "Painting",
     link: "#",
-    icon: <FaPaintRoller />, // Icon for Painting
+    icon: <FaPaintRoller />,
   },
   {
     id: 7,
     title: "Pest Control",
     link: "#",
-    icon: <AiOutlineSafety />, // Icon for Pest Control
+    icon: <AiOutlineSafety />,
   },
   {
     id: 8,
     title: "Moving & Storage",
     link: "#",
-    icon: <MdMoveToInbox />, // Icon for Moving & Storage
+    icon: <MdMoveToInbox />,
   },
   {
     id: 9,
     title: "Handyman Services",
     link: "#",
-    icon: <FaTools />, // Icon for Handyman Services
+    icon: <FaTools />,
   },
 ];
 
@@ -606,6 +607,10 @@ const Services = () => {
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+
+  // State to handle the image change and animation
+  const [currentImage, setCurrentImage] = useState("user");
+  const [animateImageIn, setAnimateImageIn] = useState(false);
 
   const checkScrollPosition = () => {
     if (scrollRef.current) {
@@ -633,7 +638,6 @@ const Services = () => {
       scrollRef.current.addEventListener("scroll", checkScrollPosition);
     }
 
-    // Cleanup the event listener on component unmount
     return () => {
       if (scrollRef.current) {
         scrollRef.current.removeEventListener("scroll", checkScrollPosition);
@@ -641,14 +645,29 @@ const Services = () => {
     };
   }, []);
 
+  // Image switch effect with sliding animation (Switches every 3 seconds)
+  useEffect(() => {
+    const imageInterval = setInterval(() => {
+      setAnimateImageIn(false); // Start with no animation (image outside of view)
+      
+      // Delay to allow the image to start from outside
+      setTimeout(() => {
+        setCurrentImage((prevImage) => (prevImage === "user" ? "provider" : "user"));
+        setAnimateImageIn(true); // Trigger the slide-in animation after the image is updated
+      }, 300); // Small delay for seamless animation
+    }, 3000); // Switches image every 3 seconds
+
+    return () => clearInterval(imageInterval);
+  }, []);
+
   return (
-    <section className="bg-white">
+    <section style={{ backgroundColor: "white" }}>
       <div className="container pb-14 pt-16 relative">
         <h1 className="text-4xl font-bold text-left pb-10">Services we provide</h1>
         <div className="flex items-center">
           <button
             onClick={scrollLeft}
-            disabled={!canScrollLeft} // Disable left arrow if can't scroll left
+            disabled={!canScrollLeft}
             className={`absolute left-0 z-10 p-2 text-xl rounded-full hover:bg-gray-400 ${!canScrollLeft ? "opacity-50 cursor-not-allowed" : ""}`}
           >
             &lt;
@@ -670,11 +689,44 @@ const Services = () => {
           </div>
           <button
             onClick={scrollRight}
-            disabled={!canScrollRight} // Disable right arrow if can't scroll right
+            disabled={!canScrollRight}
             className={`absolute right-0 z-10 p-2 text-xl rounded-full hover:bg-gray-400 ${!canScrollRight ? "opacity-50 cursor-not-allowed" : ""}`}
           >
             &gt;
           </button>
+        </div>
+
+        {/* User and Provider image switching section */}
+        <div className="flex justify-center gap-8 pt-10 relative">
+          <div
+            className={`transition-all duration-1000 transform ${
+              animateImageIn ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            }`}
+          >
+            {currentImage === "user" ? (
+              <img
+                src={UserImage}
+                alt="User Flow"
+                style={{
+                  width: "100%",
+                  maxWidth: "700px", // Increased image size
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+              />
+            ) : (
+              <img
+                src={ProviderImage}
+                alt="Provider Flow"
+                style={{
+                  width: "100%",
+                  maxWidth: "700px", // Increased image size
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+              />
+            )}
+          </div>
         </div>
       </div>
     </section>
