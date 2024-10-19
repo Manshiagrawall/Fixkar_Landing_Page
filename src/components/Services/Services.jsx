@@ -654,7 +654,7 @@ const Services = () => {
       setTimeout(() => {
         setCurrentImage((prevImage) => (prevImage === "user" ? "provider" : "user"));
         setAnimateImageIn(true); // Trigger the slide-in animation after the image is updated
-      }, 300); // Small delay for seamless animation
+      }, 200); // Small delay for seamless animation
     }, 3000); // Switches image every 3 seconds
 
     return () => clearInterval(imageInterval);
