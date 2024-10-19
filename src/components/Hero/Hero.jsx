@@ -39,12 +39,20 @@ const Hero = () => {
               animate="animate"
               className="text-3xl lg:text-5xl font-bold !leading-snug"
             >
-              Goodbye Hassles!<br />
-              <span className="text-secondary">Connect Instantly{" "}</span> 
-              with Trusted Providers.
+              Your Local Service Hub<br />
+              <span className="text-secondary">Quickly connect{" "}</span>
+              with trusted providers in your area.
             </motion.h1>
-            <motion.div
+            <motion.p
               variants={FadeUp(0.8)}
+              initial="initial"
+              animate="animate"
+              className="text-lg text-gray-700"
+            >
+              Using voice commands or a quick click, all in your language.
+            </motion.p>
+            <motion.div
+              variants={FadeUp(1)}
               initial="initial"
               animate="animate"
               className="flex justify-center md:justify-start"

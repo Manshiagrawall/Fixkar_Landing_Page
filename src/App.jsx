@@ -3,7 +3,8 @@ import Hero from "./components/Hero/Hero";
 import Services from "./components/Services/Services";
 import Banner from "./components/Banner/Banner";
 import Subscribe from "./components/Subscribe/Subscribe";
-import Banner2 from "./components/Banner/Banner2";
+// import Banner2 from "./components/Banner/Banner2";
+import Banner3 from "./components/Banner/Banner3";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
@@ -12,8 +13,9 @@ const App = () => {
       <Hero />
       <Services />
       <Banner />
+      <Banner3 />
       <Subscribe />
-      <Banner2 />
+      {/* <Banner2 /> */}
       <Footer />
     </main>
   );

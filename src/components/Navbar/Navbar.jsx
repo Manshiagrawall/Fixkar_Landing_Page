@@ -40,8 +40,14 @@ const Navbar = () => {
       >
         {/* Logo section */}
         <div>
-          <h1 className="font-bold text-4xl lg:text-5xl font-poppins">FixKar</h1>
-          <p className="text-lg font-semibold text-primary">Say It, Find It, Get It, Done!</p> {/* Updated font style and color */}
+          <motion.h1
+            className="font-bold text-4xl lg:text-5xl font-poppins transition-transform duration-300 ease-in-out transform hover:scale-110 hover:text-secondary"
+          >
+            FixKar
+          </motion.h1>
+          <p className="text-lg font-semibold text-primary">
+            Say It, Find It, Get It, Done!
+          </p>
         </div>
         {/* Menu section */}
         <div className="hidden lg:block">
