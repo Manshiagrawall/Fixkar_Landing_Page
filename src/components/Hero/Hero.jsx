@@ -32,19 +32,25 @@ const Hero = () => {
       <div className="container grid grid-cols-1 md:grid-cols-2 min-h-[650px]">
         {/* Brand Info */}
         <div className="flex flex-col justify-center py-14 md:py-0 relative z-20">
-          <div className="text-center md:text-left space-y-10 lg:max-w-[400px]">
+          <div className="text-center md:text-left space-y-8 lg:max-w-[400px]">
             <motion.h1
               variants={FadeUp(0.6)}
               initial="initial"
               animate="animate"
-              className="text-3xl lg:text-5xl font-bold !leading-snug"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold !leading-snug text-gray-800"
             >
-              Your Local Service Hub<br />
-              <span className="text-secondary">Quickly connect{" "}</span>
-              with trusted providers in your area.
+              Your Local Service Hub
             </motion.h1>
             <motion.p
               variants={FadeUp(0.8)}
+              initial="initial"
+              animate="animate"
+              className="text-lg md:text-xl text-secondary"
+            >
+              Quickly connect with trusted providers in your area.
+            </motion.p>
+            <motion.p
+              variants={FadeUp(1)}
               initial="initial"
               animate="animate"
               className="text-lg text-gray-700"
@@ -52,7 +58,7 @@ const Hero = () => {
               Using voice commands or a quick click, all in your language.
             </motion.p>
             <motion.div
-              variants={FadeUp(1)}
+              variants={FadeUp(1.2)}
               initial="initial"
               animate="animate"
               className="flex justify-center md:justify-start"
