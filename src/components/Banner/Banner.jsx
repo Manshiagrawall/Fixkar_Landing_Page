@@ -13,16 +13,14 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"; // Icons for acco
 const Banner = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggleAccordion = (index, image) => {
-    // If accordion is already open, close it and set the image to the default one
+  const toggleAccordion = (index) => {
     if (activeIndex === index) {
       setActiveIndex(null);
     } else {
-      setActiveIndex(index); // Set the active index
+      setActiveIndex(index);
     }
   };
 
-  // Determine the banner image to show based on the active accordion
   const bannerImage = activeIndex === null ? BannerPng : 
                       activeIndex === 0 ? UserFriendlyImage :
                       activeIndex === 1 ? MultiLanguageImage :
@@ -30,18 +28,18 @@ const Banner = () => {
                       RecommendationsImage;
 
   return (
-    <section>
+    <section style={{ backgroundColor: "#f4f4f4" }}> {/* Set the background color here */}
       <div className="container py-14 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-8 space-y-6 md:space-y-0">
         {/* Banner Image */}
         <div className="flex justify-center items-center">
           <div className="relative w-full h-[500px]">
             <motion.img
-              key={bannerImage} // Key change to trigger re-animation when image changes
-              initial={{ opacity: 0, x: -100 }} // Start off-screen left
-              animate={{ opacity: 1, x: 0 }} // Animate to visible position
-              exit={{ opacity: 0, x: -100 }} // Exit animation, back to left
-              transition={{ duration: 0.8, ease: "easeInOut" }} // Smooth transition
-              src={bannerImage} // Use the selected image based on active accordion
+              key={bannerImage}
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              src={bannerImage}
               alt="Services Banner"
               className="absolute inset-0 w-[600px] md:w-[500px] h-full object-contain"
               style={{ opacity: 0.7 }}
@@ -69,7 +67,7 @@ const Banner = () => {
                 content="Our platform provides an intuitive and simple interface, ensuring ease of use for everyone. Navigation is smooth, and features are accessible with minimal effort, making the process of finding and requesting services hassle-free."
                 icon={<FaBookReader className="text-2xl" />}
                 activeIndex={activeIndex}
-                toggleAccordion={() => toggleAccordion(0, UserFriendlyImage)} // Change image here
+                toggleAccordion={() => toggleAccordion(0)}
               />
 
               <AccordionItem
@@ -78,7 +76,7 @@ const Banner = () => {
                 content="We support multiple languages to make the platform accessible to a wider audience. Whether you prefer English, Spanish, or any other language, you can interact with the app in your preferred language."
                 icon={<GrUserExpert className="text-2xl" />}
                 activeIndex={activeIndex}
-                toggleAccordion={() => toggleAccordion(1, MultiLanguageImage)} // Change image here
+                toggleAccordion={() => toggleAccordion(1)}
               />
 
               <AccordionItem
@@ -87,7 +85,7 @@ const Banner = () => {
                 content="Our innovative search functionality allows you to find services using both voice and text. You can simply speak the service you are looking for or type it into the search bar, and our system will handle the rest."
                 icon={<MdOutlineAccessTime className="text-2xl" />}
                 activeIndex={activeIndex}
-                toggleAccordion={() => toggleAccordion(2, VoiceSearchImage)} // Change image here
+                toggleAccordion={() => toggleAccordion(2)}
               />
 
               <AccordionItem
@@ -96,7 +94,7 @@ const Banner = () => {
                 content="Based on your previous interactions and preferences, we offer personalized service recommendations tailored specifically to your needs. Our algorithm ensures that you get the most relevant and trusted suggestions."
                 icon={<GrUserExpert className="text-2xl" />}
                 activeIndex={activeIndex}
-                toggleAccordion={() => toggleAccordion(3, RecommendationsImage)} // Change image here
+                toggleAccordion={() => toggleAccordion(3)}
               />
             </div>
           </div>
@@ -113,7 +111,6 @@ const AccordionItem = ({ index, title, content, icon, activeIndex, toggleAccordi
     <motion.div
       className="p-6 bg-[#f4f4f4] rounded-2xl hover:bg-white duration-300 hover:shadow-2xl cursor-pointer"
     >
-      {/* Accordion header */}
       <div onClick={toggleAccordion} className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           {icon}
@@ -122,7 +119,6 @@ const AccordionItem = ({ index, title, content, icon, activeIndex, toggleAccordi
         {isActive ? <IoIosArrowUp className="text-xl" /> : <IoIosArrowDown className="text-xl" />}
       </div>
 
-      {/* Accordion content with smoother transitions */}
       <AnimatePresence>
         {isActive && (
           <motion.div
@@ -139,7 +135,7 @@ const AccordionItem = ({ index, title, content, icon, activeIndex, toggleAccordi
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }} // Smooth opacity transition
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
               <p>{content}</p>
             </motion.div>

@@ -37,7 +37,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="bg-gray-100 py-14 md:py-24">
+    <section className="bg-white py-14 md:py-24"> {/* Change section background to white */}
       <div className="container mx-auto text-center space-y-12">
         <motion.h2
           initial={{ opacity: 0 }}
@@ -54,7 +54,7 @@ const HowItWorks = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              className="space-y-4 p-4 bg-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-white hover:shadow-2xl cursor-pointer"
+              className="space-y-4 p-4 bg-gray-100 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 hover:bg-white hover:shadow-2xl cursor-pointer" // Change card background to gray
             >
               <div className="flex justify-center">{step.icon}</div>
               <h3 className="text-xl font-semibold">{step.title}</h3>
