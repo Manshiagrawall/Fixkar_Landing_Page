@@ -1,9 +1,10 @@
-import React from "react";
+import React from "react"; 
 import Navbar from "../Navbar/Navbar";
-import { IoIosArrowRoundForward } from "react-icons/io";
 import Blob from "../../assets/blob.svg";
 import HeroVideo from "../../assets/Landing page.webm"; // Update the path with your WebM video file name
 import { motion } from "framer-motion";
+import googlePlay from "../../assets/google-play.svg"; // Import Google Play logo
+import appleStore from "../../assets/apple-store.svg"; // Import Apple Store logo
 
 // FadeUp animation utility
 export const FadeUp = (delay) => {
@@ -29,7 +30,7 @@ export const FadeUp = (delay) => {
 const Hero = () => {
   return (
     <section
-      className="bg-gray-800 overflow-hidden relative" // Updated to a darker background color
+      className="bg-gray-700 overflow-hidden relative" // Changed to a lighter gray background color
       style={{
         border: "none",
         boxShadow: "none",
@@ -58,7 +59,7 @@ const Hero = () => {
               initial="initial"
               animate="animate"
               className="text-lg md:text-xl text-primary" // Changed text color on hover
-              // Replace `text-primary` with your button hover class if different
+              // Replace text-primary with your button hover class if different
             >
               Quickly connect with trusted providers in your area.
             </motion.p>
@@ -76,10 +77,13 @@ const Hero = () => {
               animate="animate"
               className="flex justify-center md:justify-start"
             >
-              <button className="primary-btn flex items-center gap-2 group">
-                Download Now
-                <IoIosArrowRoundForward className="text-xl group-hover:translate-x-2 group-hover:-rotate-45 duration-300" />
-              </button>
+              {/* Replacing the Download Now button with store links */}
+              <a href="#" className="mr-4 hover:scale-105 transition-transform duration-200">
+                <img src={appleStore} alt="Download on the Apple Store" className="h-10" />
+              </a>
+              <a href="#" className="hover:scale-105 transition-transform duration-200">
+                <img src={googlePlay} alt="Get it on Google Play" className="h-10" />
+              </a>
             </motion.div>
           </div>
         </div>
