@@ -12,8 +12,8 @@ const App = () => {
   const sections = [
     { id: "hero", component: <Hero /> },
     { id: "services", component: <Services /> },
-    { id: "banner", component: <Banner /> },
     { id: "banner3", component: <Banner3 /> },
+    { id: "banner", component: <Banner /> },
     { id: "subscribe", component: <Subscribe /> },
   ];
 

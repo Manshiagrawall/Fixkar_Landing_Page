@@ -6,8 +6,8 @@ import { Link } from "react-scroll"; // Import Link from react-scroll
 const NavbarMenu = [
   { id: 1, title: "Home", path: "hero" },       // Link to Hero section
   { id: 2, title: "Our Services", path: "services" }, // Link to Services section
-  { id: 3, title: "About Us", path: "banner" },     // Link to Banner section
   { id: 4, title: "Features", path: "banner3" },       // Link to Banner3 section
+  { id: 3, title: "About Us", path: "banner" },     // Link to Banner section
   { id: 5, title: "FAQs", path: "subscribe" }    // Link to FAQs section
 ];
 
